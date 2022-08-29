@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="calculator">
+        <div class ="calc-base">
+            <div class="numbers">
+                <button class="number" type="button">1</button>
+                <button class="number" type="button">2</button>
+                <button class="number" type="button">3</button>
+                <button class="number" type="button">4</button>
+                <button class="number" type="button">5</button>
+                <button class="number" type="button">6</button>
+                <button class="number" type="button">7</button>
+                <button class="number" type="button">8</button>
+                <button class="number" type="button">9</button>
+                <button class="number" type="button">0</button>
+            </div>    
+            <div class = "operators">    
+                <button class="operator" type="button">+</button>
+                <button class="operator" type="button">-</button>
+                <button class="operator" type="button">*</button>
+                <button class="operator" type="button">/</button>
+                <button class="operator" type="button">=</button>
+            </div>
+        </div>    
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+
+        function add(array) {
+            let sum = 0;
+            for(let key in array) {
+                array[key] += sum
+            } return sum;
+        }
+
+        function subtract(array) {
+           let total = array.reduce((a, b) => a - b) 
+           return total;
+        } 
+
+        function multiply(array) {
+            let total = array.reduce((a, b) => a * b) 
+           return total;
+        }
+
+        function divided(array) {
+            let total = array.reduce((a, b) => a / b) 
+            return total;
+        
+        }
+
+        function operate(a, b, c) {
+       let output = 0;
+    try{
+        switch(c) {
+            case '+':
+                output = a + b
+                break;
+            
+            case '*':
+                output = a * b
+                break;
+            case '-':
+                output = a - b
+                break;
+            case '/':
+                if (b === 0) {
+                    throw "can't divide by 0!"
+                }  else {
+                    output = a / b
+                }
+                break;
+        }
+    }
+    catch(e) {
+        console.log("There's an error: ", e)
+    }
+    return output
+}
+
+
+    </script>
+  </body>
+</html>

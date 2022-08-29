@@ -1,0 +1,28 @@
+.calculator {
+    display: flex;
+    
+    
+
+}
+.numbers {
+    display: grid;
+    width: 650px;
+    
+}
+
+.calc-base {
+
+    
+}
+
+button {
+    
+  
+    
+}
+
+.number {
+    display: flex;
+    
+    
+}
