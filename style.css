@@ -1,28 +1,33 @@
 .calculator {
-    display: flex;
-    
     
 
 }
 .numbers {
-    display: grid;
-    width: 650px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+    
     
 }
 
 .calc-base {
-
-    
+    width: 350px;
 }
 
 button {
+    min-width: 100px;
+    min-height: 100px;
     
-  
+   
+    
     
 }
 
-.number {
+.operators {
     display: flex;
-    
-    
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 30px;
+
 }

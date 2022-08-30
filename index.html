@@ -26,21 +26,110 @@
                 <button class="operator" type="button">*</button>
                 <button class="operator" type="button">/</button>
                 <button class="operator" type="button">=</button>
+                <button class="operator" type="button">C</button>
             </div>
         </div>    
     </div>
 
-
-
-
-
-
-
-
-
-
-
 	<script>
+       
+        let btns = document.querySelectorAll('.number');
+
+        let btns2 = document.querySelectorAll('.operator');
+        
+            let numberBtn = btns.forEach.call(btns, function(btn) {
+               
+                btn.addEventListener('click', function(event) {
+                   let newnew = Number(this.innerText)
+                   makeArrays(newnew)
+                    
+                })
+              
+            });
+
+            
+        let operatorBtn = btns2.forEach.call(btns2, function(btn) {
+        
+            btn.addEventListener('click', function(event) {
+            let newnew2 = this.innerText
+            makeArrays(newnew2)
+               
+            })
+        
+        });
+            
+    let creation = [];    
+
+    function layOut() {
+
+    }
+
+let  fullNumber = [];
+
+
+function makeArrays(obj) {
+    creation.push(obj);
+
+
+};
+
+/*
+    function makeArrays(obj) {
+        for(let i = 0; i < creation.length; i++) {
+            if (typeof obj === 'number') {
+            fullNumber.push(obj)      
+            console.log(fullNumber)
+        } else if (typeof obj === 'string') {
+                if(obj === '+' || '-' || '/' || '*') {
+           
+                let newer = fullNumber.join('')
+                creation.push(newer);
+                creation.push(obj);
+                
+            }
+        } 
+    }
+    };
+   */
+    
+
+    function finishArr() {
+        console.log()
+
+    }
+
+/*
+    function starter(obj){
+        
+        if (typeof obj == 'number') {
+            let newer = fullNumber.push(obj)    // creating the array 'fullNumber'
+                
+         if (typeof obj == 'string') {       //uses 'fullNumber' + obj to create another array 'creation'
+            let other = Number(fullNumber.join(''))               
+            
+                creation.push(other)     
+                creation.push(obj)
+                console.log(creation)
+                if (2 > creation.length) {
+                    
+                  
+                   //  arraymove(creation, [1], [2])
+                }
+ } 
+                }
+
+            
+    };
+    function arraymove(arr, fromIndex, toIndex) {
+    var element = arr[fromIndex];
+    arr.splice(fromIndex, 1);
+    arr.splice(toIndex, 0, element);
+    console.log(arr)
+}
+
+*/
+
+
 
         function add(array) {
             let sum = 0;
