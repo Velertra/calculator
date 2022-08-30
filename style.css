@@ -7,8 +7,15 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    background-color: rgba(0,0,0,0.5);
     
-    
+
 }
 
 .calc-base {

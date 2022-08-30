@@ -8,6 +8,9 @@
   <body>
     <div class="calculator">
         <div class ="calc-base">
+          <form> 
+             <output id="result" name="result" >0</output>
+            </form>
             <div class="numbers">
                 <button class="number" type="button">1</button>
                 <button class="number" type="button">2</button>
@@ -37,43 +40,104 @@
 
         let btns2 = document.querySelectorAll('.operator');
         
-            let numberBtn = btns.forEach.call(btns, function(btn) {
-               
-                btn.addEventListener('click', function(event) {
-                   let newnew = Number(this.innerText)
-                   makeArrays(newnew)
-                    
+
+        
+
+        let numberBtn = btns.forEach.call(btns, function(btn) {               
+            btn.addEventListener('click', function(event) {         //buttons are hit, call buttonHit funct
+               let newnew = Number(this.innerText)
+               buttonHit(newnew)
                 })
-              
             });
 
             
-        let operatorBtn = btns2.forEach.call(btns2, function(btn) {
-        
-            btn.addEventListener('click', function(event) {
+
+        let operatorBtn = btns2.forEach.call(btns2, function(btn) {        
+            btn.addEventListener('click', function(event) {    //click on 
             let newnew2 = this.innerText
-            makeArrays(newnew2)
-               
+            buttonHit(newnew2)          
             })
-        
         });
             
-    let creation = [];    
+            function display(x){
+                document.getElementById("result").innerHTML = x;
+            };
 
-    function layOut() {
+let base = 0;
 
+let a = null;
+let b = null;
+let c = ''
+            function buttonHit(x) {
+               if (x == '=') {
+                let result = Number(output2.join(''))
+                b += result
+                operate(a, b, c)
+                display(finalResult)
+                a = null;
+                b = null;
+                c = '';
+                output = [];
+                output2 = [];
+               } else if (x == 'C' ) {
+                a = null;
+                b = null;
+                c = '';
+                output = [];
+                output2 = [];
+                display('0')
+                } else if (a == undefined && typeof x === 'number' && x !== '=') {
+                    storeNum(x)
+                    
+                } else if (typeof x === 'string' && a == undefined && x !== '=') {
+                  let result = Number(output.join(''))
+                    a += result
+                    display(a)
+                    c = x
+                    
+                } else if (typeof x === 'number' && c !== undefined && x !== '=') {
+                    storeNum(x)
+                } else if (b == undefined && typeof x === 'string' && x !== '=') {
+                    let result = Number(output2.join(''))
+                    b += result
+                    display(b)
+                    operate(a,b,c);
+                    a = finalResult;
+                    b = null;
+                    c = x;
+                    output = [];
+                    output2 = [];
+                } 
+                
+
+            }
+
+
+ let output = [];
+ let output2 = []
+
+            function storeNum(x) {
+           
+                if (a == undefined) {        //turn number 1st # into array
+                    output.push(x)
+                   
+                
+            } else if (c !== undefined){
+                output2.push(x)
+                    
+                }
+              
+              
+        }
+
+        
+
+    function finalfunc() {
+        operate(a, b, c)        
     }
 
-let  fullNumber = [];
 
-
-function makeArrays(obj) {
-    creation.push(obj);
-
-
-};
-
-/*
+        /*
     function makeArrays(obj) {
         for(let i = 0; i < creation.length; i++) {
             if (typeof obj === 'number') {
@@ -121,58 +185,60 @@ function makeArrays(obj) {
             
     };
     function arraymove(arr, fromIndex, toIndex) {
-    var element = arr[fromIndex];
+    var element = arr[fromIndex];               //moves array
     arr.splice(fromIndex, 1);
     arr.splice(toIndex, 0, element);
     console.log(arr)
 }
 
 */
-
+let finalResult = 0;
 
 
         function add(array) {
-            let sum = 0;
-            for(let key in array) {
-                array[key] += sum
-            } return sum;
-        }
+            let total = array.reduce((a, b) => a + b) 
+            finalResult = total
+
+        } 
 
         function subtract(array) {
-           let total = array.reduce((a, b) => a - b) 
-           return total;
+           let total = array.reduce((a, b) => a - b)        // functions used to run math problems
+           finalResult = total
         } 
 
         function multiply(array) {
             let total = array.reduce((a, b) => a * b) 
-           return total;
+            finalResult = total
         }
 
         function divided(array) {
             let total = array.reduce((a, b) => a / b) 
-            return total;
+            finalResult = total
         
         }
 
+        
+
         function operate(a, b, c) {
-       let output = 0;
+       let convert = Array.from(arguments).slice(0, 2);         //function that takes a,b,c and converts
+         let output = 0                                         //into array to use math functions
     try{
         switch(c) {
             case '+':
-                output = a + b
+                output = add(convert)
                 break;
             
             case '*':
-                output = a * b
+                output = multiply(convert)
                 break;
             case '-':
-                output = a - b
+                output = subtract(convert)
                 break;
             case '/':
                 if (b === 0) {
                     throw "can't divide by 0!"
                 }  else {
-                    output = a / b
+                    output = divided(convert)
                 }
                 break;
         }
